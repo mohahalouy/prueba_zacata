@@ -1,26 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Suspense>
+    <HomeCard></HomeCard>
+    <template #fallback>
+      <LoaderCard></LoaderCard>
+    </template>
+  </Suspense>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HomeCard from "./views/HomeCard";
+import LoaderCard from "@/components/LoaderCard";
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: {LoaderCard, HomeCard},
 }
 </script>
 
-<style>
+<style lang="scss">
+$color_1: #2c3e50;
+$font-family_1: Avenir, Helvetica, Arial, sans-serif;
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: $font-family_1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: $color_1;
+  padding: 40px;
 }
+
 </style>
